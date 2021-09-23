@@ -86,19 +86,50 @@ class SinglyLinkedList {
     if (!this.head) {
       return undefined;
     }
-    if(this.length === 1) {
-      afterHead = this.head;
+    if(this.length === 0) {
       this.head = null;
       this.tail = null;
-      return afterHead;
     }
-    //take head property
-    afterHead= this.head.next;
+
+    afterHead= this.head;
     delete this.head;
-    this.head = afterHead;
-    //remove what's there and update it
-    //with what's next.
-    thi.length--;
+    this.head = afterHead.next;
+
+    this.length--;
+    return afterHead;
+  }
+
+  unshift(val) {
+
+    var newNode = new Node(val);
+    if (this.length === 0) {
+      this.head = newNode;
+      this.tail = this.head;
+    } else {
+      newNode.next = this.head
+      this.head = newNode;
+    }
+
+    this.length++;
+    return this
+  }
+
+  get(num) {
+    //traverse list, returning item at that index
+    var counter = 0;
+    if (!this.head) {
+      return undefined;
+    }
+    var current = this.head
+    while(current) {
+      //if there is a next, set current to next
+      //if counter matches num, return node
+      //else
+      //increment counter
+
+    }
+    //if number is greater than or eq. to list, return undefined
+    //when match found, return node found
   }
 }
 
@@ -112,5 +143,6 @@ intro.push(name);
 //console.log('head' ,intro.head, 'tail', intro.tail);
 intro.push(is);
 intro.push(angie);
-console.log( 'popped', intro.pop(angie) , intro, intro.tail);
+console.log( 'popped', intro.pop() , intro, intro.tail);
 console.log('head' ,intro.head, 'tail', intro.tail);
+console.log( 'shifted', intro.shift());
